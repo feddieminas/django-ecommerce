@@ -6,6 +6,14 @@
 <form method="POST" action="{% url 'login' %}?next={{ next }}" class="accountform">
     <fieldset class="form-group">
         <legend>Login</legend>
+        
+        {% if next %}
+            <p>No account? <a href="{% url 'registration' %}?next={{ next }}">Sign up</a> now.</p>
+        {% else %}        
+            <p>No account? <a href="{% url 'registration' %}">Sign up</a> now.</p>
+        {% endif %}
+            
+        <br>        
         {% csrf_token %}
         {{ login_form | as_bootstrap }}
         

@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 
 class EmailAuth:
     """Authenticate a user by an exact match on the email and password"""
@@ -9,7 +10,15 @@ class EmailAuth:
         """
         
         try:
-            user = User.objects.get(email=username) # username is the name of the form element
+            users = User.objects.filter(Q(username__iexact=username) |
+                                    Q(email__iexact=username)) 
+            
+            if not users:
+                return None
+    
+            # Then get the first result of the query (which is your user).
+            user = users[0]
+            # If the password is correct, return user object            
             
             if user.check_password(password):
                 return user

@@ -22,7 +22,7 @@ class UserRegistrationForm(UserCreationForm):
         
     class Meta: # meta classes used to determine things about the class itself, to specify model want to store info, want it to use to specify fields we are going to use
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['username','email','password1', 'password2']
         
     def clean_email(self):
         email = self.cleaned_data.get('email') # allows us to clean the email field and return the email once we're done

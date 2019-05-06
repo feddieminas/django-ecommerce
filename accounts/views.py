@@ -68,7 +68,12 @@ def registration(request):
         if user:
             auth.login(user=user, request=request)
             messages.success(request, "You have succesfully registered")
-            return redirect(reverse('index'))
+            
+            if request.GET and request.GET['next'] !='':
+                next = request.GET['next']
+                return HttpResponseRedirect(next)
+            else:
+                return redirect(reverse('profile'))   
         else:
             messages.error(request, "Unable to register your account at this time")
     
