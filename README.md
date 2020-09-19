@@ -8,4 +8,4 @@ A simple ecommerce app written using Django.
 
 ### travis-ci
 
-[![Build Status](https://travis-ci.com/feddieminas/django-ecommerce.svg?branch=master)](https://travis-ci.org/feddieminas/django-ecommerce)
+[![Build Status](https://travis-ci.com/feddieminas/django-ecommerce.svg?branch=master)](https://travis-ci.com/feddieminas/django-ecommerce)
